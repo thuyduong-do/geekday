@@ -24,32 +24,17 @@ namespace thelastteam_geekday_2020.Controllers
         [HttpPost]
         public Data Ufo(Data data)
         {
-            return new Data()
-            {
-                ID = data.ID,
-                Units = data.Units,
-                message="hello world"
-            };
+            logic.addData(data);
+            return logic.readData();
+        }
 
-            //return new Player[]
-            //{
-            //    new Player()
-            //    {
-            //        ID=1,
-            //        Action="MoveE"
-            //    },
-            //    new Player()
-            //    {
-            //        ID=2,
-            //        Action="MoveE"
-            //    },
-            //    new Player()
-            //    {
-            //        ID=3,
-            //        Action="MoveE"
-            //    },
 
-            //};
+        [ActionName("ufo2")]
+        [HttpPost]
+        public string Ufo2(Data data)
+        {
+            logic.addData(data);
+            return logic.writeData();
         }
     }
 }
