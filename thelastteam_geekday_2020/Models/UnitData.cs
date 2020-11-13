@@ -5,7 +5,7 @@ using System.Web;
 
 namespace thelastteam_geekday_2020.Models
 {
-    public class Enemy
+    public class UnitData
     {
        public int UnitId { get; set;  } 
         public int Ammo { get; set; }

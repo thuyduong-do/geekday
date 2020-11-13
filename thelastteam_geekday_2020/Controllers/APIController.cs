@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -21,32 +22,34 @@ namespace thelastteam_geekday_2020.Controllers
        
         [ActionName("ufo")]
         [HttpPost]
-        public Player[] UfoKill(Enemy enemy)
+        public Data Ufo(Data data)
         {
-            if(enemy.UnitId == 1)
+            return new Data()
             {
-                //logic...
-            }
-
-            return new Player[]
-            {
-                new Player()
-                {
-                    ID=1,
-                    Action="MoveE"
-                },
-                new Player()
-                {
-                    ID=2,
-                    Action="MoveE"
-                },
-                new Player()
-                {
-                    ID=3,
-                    Action="MoveE"
-                },
-
+                ID = data.ID,
+                Units = data.Units,
+                message="hello world"
             };
+
+            //return new Player[]
+            //{
+            //    new Player()
+            //    {
+            //        ID=1,
+            //        Action="MoveE"
+            //    },
+            //    new Player()
+            //    {
+            //        ID=2,
+            //        Action="MoveE"
+            //    },
+            //    new Player()
+            //    {
+            //        ID=3,
+            //        Action="MoveE"
+            //    },
+
+            //};
         }
     }
 }
