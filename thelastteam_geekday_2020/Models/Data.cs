@@ -10,10 +10,13 @@ namespace thelastteam_geekday_2020.Models
     {
         [JsonProperty("you_are")]
         public int ID { get; set; }
+        
         [JsonProperty("your_units")]
         public int[] Units { get; set; }
+        
         [JsonProperty("your_unitdatas")]
         public UnitData[] UnitDatas { get; set; }
+        
         [JsonProperty("you_see")]
         public Item[] Items { get; set; }
 
