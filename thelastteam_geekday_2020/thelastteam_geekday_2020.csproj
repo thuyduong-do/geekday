@@ -275,6 +275,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Logic\movement.cs" />
     <Compile Include="Logic\PlayerLogic.cs" />
     <Compile Include="Models\Data.cs" />
     <Compile Include="Models\Item.cs" />
@@ -312,6 +313,9 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <None Include="Properties\PublishProfiles\geekday - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\geekday - ReadOnly - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\geekday - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

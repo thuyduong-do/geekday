@@ -10,15 +10,48 @@ namespace thelastteam_geekday_2020.Logic
     public class PlayerLogic
     {
         Data data;
+        IEnumerable<Item> walls;
+        IEnumerable<UnitData> units;
 
+        Array movements = Enum.GetValues(typeof(movement));
+        Random R = new Random();
+
+        public string action()
+        {
+            return movements.GetValue(R.Next(movements.Length)).ToString();
+        }
         public void addData(Data data)
         {
             this.data = data;
+            this.walls = data.Items.Select(i => new Item { X = i.X, Y = i.Y, ItemId = i.ItemId });
+            this.units = data.UnitDatas.Select(i => new UnitData { UnitId = i.UnitId,Ammo=i.Ammo, HealthPoint= i.HealthPoint, X= i.X, Y=i.Y }); 
         }
 
-        public Player[] PlayerMove()
+        public List<Item> notWall()
         {
-            return null;
+            return walls.Where(x => x.ItemId != 1).ToList();
+        }
+        public IEnumerable<Player> PlayerMove() 
+        {
+            List<Player> players = new List<Player>();
+            List<Item> enemies = notWall();
+            for (int i = 0; i < 3; i++)
+            {
+                foreach (var item in units)
+                {
+                    var act = action();
+                    Player temp = new Player();
+                    temp.UnitId = item.UnitId;
+                    if (act == "Shoot")
+                    {
+                        temp.TargetId = enemies[R.Next(0, enemies.Count())].ItemId;
+                    }
+                    temp.Action = act;
+                    players.Add(temp);
+                }
+            }        
+
+            return players;
         }
 
         public Data readData()
@@ -27,7 +60,7 @@ namespace thelastteam_geekday_2020.Logic
         }
 
 
-        bool check(int x, int y, IEnumerable<Item> walls)
+        bool check(int x, int y)
         {
             
             foreach (var w in walls)
@@ -43,13 +76,12 @@ namespace thelastteam_geekday_2020.Logic
         public string writeData()
         {
             StringBuilder b = new StringBuilder();
-            IEnumerable<Item> walls = data.Items.Select(i => new Item { X = i.X, Y = i.Y, ItemId=i.ItemId });
 
             for (int y = 1; y < 701; y++)
             {
                     for (int x = 1; x < 1001; x++)
                     {
-                        if (this.check(x,y,walls))
+                        if (this.check(x,y))
                         {
                             b.Append('|');
                         }

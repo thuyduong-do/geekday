@@ -22,19 +22,11 @@ namespace thelastteam_geekday_2020.Controllers
        
         [ActionName("ufo")]
         [HttpPost]
-        public Data Ufo(Data data)
+        public IEnumerable<Player> Ufo(Data data)
         {
             logic.addData(data);
-            return logic.readData();
+            return logic.PlayerMove();
         }
 
-
-        [ActionName("ufo2")]
-        [HttpPost]
-        public string Ufo2(Data data)
-        {
-            logic.addData(data);
-            return logic.writeData();
-        }
     }
 }
